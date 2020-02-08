@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {FeatureExplorer} from './modules/FeatureExplorer';
 import {featureData} from './data/featureData';
+import {FeatureExplorer} from './modules/FeatureExplorer';
 
 const App = () => <FeatureExplorer features={featureData} />;
 

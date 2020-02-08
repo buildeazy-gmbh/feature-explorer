@@ -1,5 +1,4 @@
 import {allCustomerSegments, statusOrder} from '../../constants';
-
 import {Feature, Filters, Status} from './types';
 
 export const uniqueFeatureGroups = (features: Feature[], groupOrder: string[]): string[] => {

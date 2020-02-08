@@ -2,10 +2,6 @@ import ColorPalette from 'iwanthue';
 import React, {useCallback, useState} from 'react';
 import {Cell, Pie, PieChart, Tooltip} from 'recharts';
 
-import {allCustomerSegments, COLOR_SPACE, COMMON_PIE_PROPS, RADIUS, SIZE, statusOrder} from '../../constants';
-import {groupOrder, productName} from '../../data/featureData';
-import {opacityByStatus} from '../../lib';
-
 import {
   CurvedLabel,
   FeatureDescription,
@@ -17,7 +13,9 @@ import {
   Sidebar,
   TargetCustomers,
 } from '../../components';
-
+import {COLOR_SPACE, COMMON_PIE_PROPS, RADIUS, SIZE, allCustomerSegments, statusOrder} from '../../constants';
+import {groupOrder, productName} from '../../data/featureData';
+import {opacityByStatus} from '../../lib';
 import {
   filteredFeatures,
   transformData,

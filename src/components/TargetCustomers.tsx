@@ -1,4 +1,4 @@
-import React, {memo, PropsWithChildren} from 'react';
+import React, {PropsWithChildren, memo} from 'react';
 
 export const TargetCustomers = memo(({children}: PropsWithChildren<{}>) => (
   <div
