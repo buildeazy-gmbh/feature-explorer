@@ -60,7 +60,7 @@ export const SectionHeading = ({children}: PropsWithChildren<{}>) => (
       color: t.color.text.light,
       fontSize: t.fontSize.h3,
       fontWeight: 'bold',
-      marginBottom: 0,
+      marginBottom: t.size.small,
       marginTop: t.size.large,
       userSelect: 'none',
     }}
