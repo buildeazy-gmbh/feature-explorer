@@ -3,6 +3,8 @@
 This is a tiny side project to interactively visualize the features of a product in your browser.
 The goal is to make it easier to get an overview of the feature set of a product and make it easy and fun to explore it.
 
+Check out the demo at https://buildeazy-gmbh.github.io/feature-explorer/!
+
 ![FeatureExplorer screenshot](screenshot.png)
 
 The app takes data in the following format
