@@ -6,7 +6,6 @@
   "repository": "git@github.com:buildeazy-gmbh/feature-explorer.git",
   "homepage": "https://buildeazy-gmbh.github.io/feature-explorer",
   "author": "Dominik Rodler <dominik.rodler@buildeazy.de>",
-  "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
