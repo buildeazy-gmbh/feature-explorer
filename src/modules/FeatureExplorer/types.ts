@@ -6,3 +6,9 @@ export type Feature = {
   status: Status;
   customers: string[];
 };
+
+export type Filters = {
+  featureGroup?: string;
+  implementationStatus?: string;
+  targetCustomers: string;
+};

@@ -1,6 +1,6 @@
 export const groupOrder = ['Eat', 'Drink', 'Sleep'];
 
-export const demoFeatures = [
+export const featureData = [
   {
     name: 'Some feature 1',
     group: 'Eat',

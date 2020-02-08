@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {FeatureExplorer} from './modules/FeatureExplorer';
-import {demoFeatures} from './data/demoFeatures';
+import {featureData} from './data/featureData';
 
-const App = () => <FeatureExplorer features={demoFeatures} />;
+const App = () => <FeatureExplorer features={featureData} />;
 
 export default App;

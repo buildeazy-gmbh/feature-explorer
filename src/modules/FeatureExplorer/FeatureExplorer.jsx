@@ -2,8 +2,8 @@ import ColorPalette from 'iwanthue';
 import React, {useCallback, useState} from 'react';
 import {Cell, Pie, PieChart, Tooltip} from 'recharts';
 
-import {COLOR_SPACE, COMMON_PIE_PROPS, RADIUS, SIZE, statusOrder} from '../../constants';
-import {groupOrder} from '../../data/demoFeatures';
+import {allCustomerSegments, COLOR_SPACE, COMMON_PIE_PROPS, RADIUS, SIZE, statusOrder} from '../../constants';
+import {groupOrder} from '../../data/featureData';
 import {opacityByStatus} from '../../lib';
 
 import {
@@ -18,114 +18,66 @@ import {
   TargetCustomers,
 } from '../../components';
 
-import {getCustomerSegments, transformData, uniqueFeatureGroups, uniqueStatus} from './transformData';
-
-const sortFeatures = (a, b) => {
-  // first sort by group name
-  if (groupOrder?.length) {
-    const g = groupOrder.indexOf(a.group) - groupOrder.indexOf(b.group);
-    if (g > 0) {
-      return 1;
-    } else if (g < 0) {
-      return -1;
-    }
-  } else {
-    if (a.group > b.group) {
-      return 1;
-    } else if (a.group < b.group) {
-      return -1;
-    }
-  }
-
-  // then sort by implementation status
-  const s = statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status);
-  if (s > 0) {
-    return 1;
-  } else if (s < 0) {
-    return -1;
-  }
-
-  // and lastly sort by feature name
-  if (a.name > b.name) {
-    return 1;
-  } else if (a.name < b.name) {
-    return -1;
-  }
-};
+import {
+  filteredFeatures,
+  transformData,
+  uniqueCustomerSegments,
+  uniqueFeatureGroups,
+  uniqueStatus,
+} from './transformData';
 
 export const FeatureExplorer = ({features}) => {
+  const customerSegments = [allCustomerSegments].concat(uniqueCustomerSegments(features));
   const featureGroups = uniqueFeatureGroups(features, groupOrder);
   const status = uniqueStatus(features, statusOrder);
 
-  const colors = ColorPalette(featureGroups.length, {
-    colorSpace: COLOR_SPACE,
-  });
+  const colors = ColorPalette(featureGroups.length, {colorSpace: COLOR_SPACE});
   const groupColor = group => colors[featureGroups.indexOf(group)];
 
-  const allCustomerSegments = 'All';
-  const customerSegments = [allCustomerSegments].concat(getCustomerSegments(features));
+  const [activeFilters, setActiveFilter] = useState({
+    featureGroup: null,
+    implementationStatus: null,
+    targetCustomers: allCustomerSegments,
+  });
 
-  const [targetCustomers, setTargetCustomers] = useState(allCustomerSegments);
-  const [featureGroup, setFeatureGroup] = useState(null);
-  const [implementationStatus, setImplementationStatus] = useState(null);
-
-  const filterTargetCustomers = useCallback(
-    customerSegment => {
-      setTargetCustomers(targetCustomers === customerSegment ? allCustomerSegments : customerSegment);
+  const filterFeatures = useCallback(
+    (key, value) => {
+      const defaultValue = key === 'targetCustomers' ? allCustomerSegments : null;
+      setActiveFilter({
+        ...activeFilters,
+        [key]: activeFilters[key] === value ? defaultValue : value,
+      });
     },
-    [setTargetCustomers, targetCustomers]
-  );
-
-  const filterFeatureGroups = useCallback(
-    group => {
-      setFeatureGroup(featureGroup === group ? null : group);
-    },
-    [featureGroup, setFeatureGroup]
-  );
-
-  const filterStatus = useCallback(
-    status => {
-      setImplementationStatus(implementationStatus === status ? null : status);
-    },
-    [implementationStatus, setImplementationStatus]
-  );
-
-  const {featuresData, featureGroupsData} = transformData(
-    features
-      .filter(
-        it =>
-          (!featureGroup || featureGroup === it.group) &&
-          (targetCustomers === allCustomerSegments || it.customers.includes(targetCustomers)) &&
-          (!implementationStatus || implementationStatus === it.status)
-      )
-      .sort(sortFeatures)
+    [activeFilters, setActiveFilter]
   );
 
   const filters = [
     {
       heading: 'Target Customers',
       items: customerSegments,
-      onClick: filterTargetCustomers,
+      onClick: value => filterFeatures('targetCustomers', value),
     },
     {
       heading: 'Feature Group',
       itemColorFunc: groupColor,
       items: featureGroups,
-      onClick: filterFeatureGroups,
+      onClick: value => filterFeatures('featureGroup', value),
     },
     {
       heading: 'Implementation Status',
       items: status,
-      onClick: filterStatus,
+      onClick: value => filterFeatures('implementationStatus', value),
     },
   ];
 
-  const mainHeading = ['buildeazy', featureGroup, 'Features'].filter(Boolean).join(' ');
+  const {featuresData, featureGroupsData} = transformData(filteredFeatures(features, activeFilters));
+
+  const heading = ['buildeazy', activeFilters.featureGroup, 'Features'].filter(Boolean).join(' ');
 
   return (
     <Page>
       <Main>
-        <MainHeading>{mainHeading}</MainHeading>
+        <MainHeading>{heading}</MainHeading>
         <PieChart {...SIZE}>
           <Pie
             {...COMMON_PIE_PROPS}
@@ -149,7 +101,7 @@ export const FeatureExplorer = ({features}) => {
               />
             ))}
           </Pie>
-          {!featureGroup && (
+          {!activeFilters.featureGroup && (
             <Pie
               {...COMMON_PIE_PROPS}
               data={featureGroupsData}
@@ -167,7 +119,7 @@ export const FeatureExplorer = ({features}) => {
           )}
           {/* <Tooltip content={<FeatureDescription />} /> */}
         </PieChart>
-        <TargetCustomers>{targetCustomers}</TargetCustomers>
+        <TargetCustomers>{activeFilters.targetCustomers}</TargetCustomers>
       </Main>
       <Sidebar>
         {filters.map(it => (

@@ -43,7 +43,9 @@ export const Option = ({
     style={{
       cursor: 'pointer',
       opacity: isNotSelected ? 0.26 : 1,
-      padding: t.size.small,
+      paddingBottom: t.size.small,
+      paddingRight: t.size.small,
+      paddingTop: t.size.small,
       transition: 'opacity 200ms ease-out',
       whiteSpace: 'nowrap',
     }}
@@ -58,7 +60,7 @@ export const SectionHeading = ({children}: PropsWithChildren<{}>) => (
       color: t.color.text.light,
       fontSize: t.fontSize.h3,
       fontWeight: 'bold',
-      marginBottom: t.size.small,
+      marginBottom: 0,
       marginTop: t.size.large,
       userSelect: 'none',
     }}
