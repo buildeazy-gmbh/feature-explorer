@@ -18,7 +18,7 @@ export const featureData = [
   {
     name: 'Some feature 3',
     group: 'Analysis',
-    status: 'development',
+    status: 'production',
     customers: ['B2C', 'B2C'],
   },
   {
