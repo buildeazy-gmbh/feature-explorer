@@ -4,6 +4,7 @@
   "description": "Interactively visualize the features of a product.",
   "main": "index.js",
   "repository": "git@github.com:buildeazy-gmbh/feature-explorer.git",
+  "homepage": "https://buildeazy-gmbh.github.io/feature-explorer",
   "author": "Dominik Rodler <dominik.rodler@buildeazy.de>",
   "private": true,
   "scripts": {
@@ -15,7 +16,8 @@
     "lint": "eslint --quiet --fix --ext .js,.jsx,.ts,.tsx src/",
     "sort-imports": "import-sort --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "pre-commit": "unset GIT_DIR && lint-staged",
-    "publish": "react-scripts build && mv build docs"
+    "predeploy": "react-scripts build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@types/react": "^16.9.19",
@@ -37,6 +39,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.3.0",
+    "gh-pages": "^2.2.0",
     "husky": "^4.2.1",
     "import-sort": "^6.0.0",
     "import-sort-cli": "^6.0.0",
