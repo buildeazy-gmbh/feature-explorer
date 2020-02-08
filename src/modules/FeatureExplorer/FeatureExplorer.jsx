@@ -3,7 +3,7 @@ import React, {useCallback, useState} from 'react';
 import {Cell, Pie, PieChart, Tooltip} from 'recharts';
 
 import {allCustomerSegments, COLOR_SPACE, COMMON_PIE_PROPS, RADIUS, SIZE, statusOrder} from '../../constants';
-import {groupOrder} from '../../data/featureData';
+import {groupOrder, productName} from '../../data/featureData';
 import {opacityByStatus} from '../../lib';
 
 import {
@@ -72,7 +72,7 @@ export const FeatureExplorer = ({features}) => {
 
   const {featuresData, featureGroupsData} = transformData(filteredFeatures(features, activeFilters));
 
-  const heading = ['buildeazy', activeFilters.featureGroup, 'Features'].filter(Boolean).join(' ');
+  const heading = [productName, activeFilters.featureGroup, 'Features'].filter(Boolean).join(' ');
 
   return (
     <Page>

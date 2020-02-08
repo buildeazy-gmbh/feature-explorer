@@ -1,75 +1,77 @@
-export const groupOrder = ['Eat', 'Drink', 'Sleep'];
+export const productName = 'FeatureExplorer';
+
+export const groupOrder = ['Analysis', 'Visualization', 'Optimization'];
 
 export const featureData = [
   {
     name: 'Some feature 1',
-    group: 'Eat',
+    group: 'Analysis',
     status: 'production',
     customers: ['B2C'],
   },
   {
     name: 'Some feature 2',
-    group: 'Eat',
+    group: 'Analysis',
     status: 'production',
     customers: ['B2C', 'B2C'],
   },
   {
     name: 'Some feature 3',
-    group: 'Eat',
+    group: 'Analysis',
     status: 'development',
     customers: ['B2C', 'B2C'],
   },
   {
     name: 'Some feature 4',
-    group: 'Drink',
+    group: 'Visualization',
     status: 'production',
     customers: ['B2B'],
   },
   {
     name: 'Some feature 5',
-    group: 'Drink',
+    group: 'Visualization',
     status: 'production',
     customers: ['B2B'],
   },
   {
     name: 'Some feature 6',
-    group: 'Drink',
+    group: 'Visualization',
     status: 'development',
     customers: ['B2B'],
   },
   {
     name: 'Some feature 7',
-    group: 'Drink',
+    group: 'Visualization',
     status: 'development',
     customers: ['B2B'],
   },
   {
     name: 'Some feature 8',
-    group: 'Sleep',
+    group: 'Optimization',
     status: 'production',
     customers: ['B2C'],
   },
   {
     name: 'Some feature 9',
-    group: 'Sleep',
+    group: 'Optimization',
     status: 'production',
     customers: ['B2C'],
   },
   {
     name: 'Some feature 10',
-    group: 'Sleep',
+    group: 'Optimization',
     status: 'evaluation',
     customers: ['B2C'],
   },
   {
     name: 'Some feature 11',
-    group: 'Sleep',
+    group: 'Optimization',
     status: 'development',
     customers: ['B2C'],
   },
   {
     name: 'Some feature 12',
-    group: 'Sleep',
+    group: 'Optimization',
     status: 'evaluation',
     customers: ['B2C'],
   },
