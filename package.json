@@ -14,7 +14,8 @@
     "prettier": "prettier --write --list-different \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint --quiet --fix --ext .js,.jsx,.ts,.tsx src/",
     "sort-imports": "import-sort --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "pre-commit": "unset GIT_DIR && lint-staged"
+    "pre-commit": "unset GIT_DIR && lint-staged",
+    "publish": "react-scripts build && mv build docs"
   },
   "dependencies": {
     "@types/react": "^16.9.19",
