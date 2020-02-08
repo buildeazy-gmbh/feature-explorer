@@ -10,8 +10,8 @@ The app takes data in the following format
 ```
 [
   {
-    name: 'Some feature 11',
-    group: 'Sleep',
+    name: 'Some feature 1',
+    group: 'Analysis',
     status: 'development',
     customers: ['B2C'],
   },
