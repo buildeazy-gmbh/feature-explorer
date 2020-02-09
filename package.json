@@ -1,6 +1,6 @@
 {
   "name": "feature-explorer",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Interactively visualize the features of a product.",
   "main": "index.js",
   "repository": "git@github.com:buildeazy-gmbh/feature-explorer.git",

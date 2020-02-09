@@ -1,5 +1,5 @@
 import ColorPalette from 'iwanthue';
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {Cell, Pie, PieChart, Tooltip} from 'recharts';
 
 import {
@@ -29,7 +29,7 @@ export const FeatureExplorer = ({features}) => {
   const featureGroups = uniqueFeatureGroups(features, groupOrder);
   const status = uniqueStatus(features, statusOrder);
 
-  const colors = ColorPalette(featureGroups.length, {colorSpace: COLOR_SPACE});
+  const colors = useRef(ColorPalette(featureGroups.length, {colorSpace: COLOR_SPACE})).current;
   const groupColor = group => colors[featureGroups.indexOf(group)];
 
   const [activeFilters, setActiveFilter] = useState({
