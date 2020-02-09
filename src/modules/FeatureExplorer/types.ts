@@ -1,4 +1,4 @@
-export type Status = 'production' | 'development' | 'evaluation';
+export type Status = 'production' | 'development' | 'planned' | 'evaluation';
 
 export type Feature = {
   name: string;

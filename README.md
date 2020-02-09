@@ -27,7 +27,7 @@ The visualization can be filtered by
 
 - Target customers
 - Feature group
-- Implementation status (`evaluation`, `development`, or `production`)
+- Implementation status (`evaluation`, `planned`, `development`, or `production`)
 
 Out of the box, the app renders the features from `/data/featureData.ts`, which contains some demo data for illustration.
 Either replace the data in that file or add another file with your feature data and pass it into the FeatureExplorer component.
