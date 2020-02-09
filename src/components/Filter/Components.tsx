@@ -20,7 +20,7 @@ export const LegendKey = ({background}: {background: string}) => (
   <span
     style={{
       background,
-      borderRadius: 1,
+      borderRadius: 2,
       display: 'inline-block',
       height: t.size.default,
       marginRight: t.size.small,

@@ -68,7 +68,7 @@ export const FeatureExplorer = ({features}) => {
     },
   ];
 
-  const {featuresData, featureGroupsData} = transformData(filteredFeatures(features, activeFilters));
+  const {featuresData, featureGroupsData} = transformData(filteredFeatures(features, activeFilters, groupOrder));
 
   const heading = [productName, activeFilters.featureGroup, 'Features'].filter(Boolean).join(' ');
 
